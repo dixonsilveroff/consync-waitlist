@@ -26,7 +26,7 @@ export default function FounderLetter() {
                 <div className="absolute inset-0 flex items-center justify-center text-steel-grey/40 font-poppins text-sm tracking-widest uppercase">
                   Portrait
                 </div>
-                {/* <Image src="/portrait.jpg" alt="Founder" fill className="object-cover" /> */}
+                <Image src="/me.png" alt="Founder" fill className="object-cover" />
               </div>
               {/* Decorative accent block */}
               <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-blueprint-blue rounded-2xl -z-10"></div>
@@ -47,7 +47,7 @@ export default function FounderLetter() {
             
             <div className="space-y-6 text-lg text-steel-grey font-light leading-relaxed">
               <p>
-                I am a software engineer and a civil engineering student. I have spent enough time on Nigerian construction sites to know exactly how the 'trust deficit' works.
+                I am a software engineer and a civil engineering professional. I have spent enough time on Nigerian construction sites to know exactly how the 'trust deficit' works.
               </p>
               <p>
                 Contractors stop work because of payment lags. Clients lose millions because of 'Oga' promises that don't match the reality on the ground. I didn't build ConSync to be another project management app. I built it to be a financial control system.
@@ -58,7 +58,7 @@ export default function FounderLetter() {
             </div>
 
             <div className="mt-10 pt-8 border-t border-gray-100">
-              <p className="font-bold text-graphite-black font-poppins text-xl">Dixon Silveroff</p>
+              <p className="font-bold text-graphite-black font-poppins text-xl">Victor Nwafor</p>
               <p className="text-blueprint-blue text-sm uppercase tracking-widest font-semibold mt-1">Founder, ConSync</p>
             </div>
           </motion.div>
