@@ -40,6 +40,43 @@ export const waitlistSchema = z.object({
   ], {
     errorMap: () => ({ message: "Please select a management option." })
   }),
+
+  verificationMethod: z.string().optional(),
+
+  lossExperience: z.enum([
+    "yes",
+    "no",
+    "unsure"
+  ], {
+    errorMap: () => ({ message: "Please select an option." })
+  }),
+
+  controlGap: z.enum([
+    "payments",
+    "materials",
+    "progress",
+    "communication"
+  ], {
+    errorMap: () => ({ message: "Please select a control gap." })
+  }),
+
+  monthlyLoss: z.string().optional(),
+
+  urgency: z.enum([
+    "immediate",
+    "1-3months",
+    "later"
+  ], {
+    errorMap: () => ({ message: "Please select an urgency level." })
+  }),
+
+  escrowWillingness: z.enum([
+    "yes",
+    "maybe",
+    "no"
+  ], {
+    errorMap: () => ({ message: "Please select an option." })
+  })
 });
 
 export type WaitlistFormValues = z.infer<typeof waitlistSchema>;

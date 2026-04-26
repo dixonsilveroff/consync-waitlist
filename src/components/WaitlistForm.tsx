@@ -10,8 +10,8 @@ import { ArrowRight, ArrowLeft, CheckCircle2 } from 'lucide-react';
 
 const steps = [
   { id: 1, name: 'Identity', fields: ['fullName', 'email', 'phone', 'location'] },
-  { id: 2, name: 'Context', fields: ['projectStatus', 'projectLocation', 'projectType'] },
-  { id: 3, name: 'Readiness', fields: ['budget', 'currentManagement'] },
+  { id: 2, name: 'Context', fields: ['projectStatus', 'projectLocation', 'projectType', 'budget', 'currentManagement'] },
+  { id: 3, name: 'Readiness', fields: ['verificationMethod', 'lossExperience', 'controlGap', 'monthlyLoss', 'urgency', 'escrowWillingness'] },
 ];
 
 export default function WaitlistForm() {
@@ -168,12 +168,6 @@ export default function WaitlistForm() {
                           </select>
                           {errors.projectType && <p className="text-sm text-alert-red mt-1.5">{errors.projectType.message}</p>}
                         </div>
-                      </motion.div>
-                    )}
-
-                    {/* Step 3: Readiness */}
-                    {currentStep === 2 && (
-                      <motion.div key="step3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.3 }} className="space-y-6">
                         <div>
                           <label className="block text-sm font-medium text-graphite-black mb-1.5">Estimated Budget (USD)</label>
                           <select {...register('budget')} className="block w-full px-4 py-3 bg-concrete-white border-transparent rounded-xl focus:bg-white focus:ring-2 focus:ring-blueprint-blue focus:border-transparent transition-all appearance-none cursor-pointer">
@@ -195,6 +189,74 @@ export default function WaitlistForm() {
                             <option value="none">No one on the ground yet</option>
                           </select>
                           {errors.currentManagement && <p className="text-sm text-alert-red mt-1.5">{errors.currentManagement.message}</p>}
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {/* Step 3: Readiness */}
+                    {currentStep === 2 && (
+                      <motion.div key="step3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.3 }} className="space-y-6">
+                        <div>
+                          <label className="block text-sm font-medium text-graphite-black mb-1.5">How do you currently verify work is done before paying? (Optional)</label>
+                          <input type="text" {...register('verificationMethod')} placeholder="e.g. WhatsApp photos, relative visits" className="block w-full px-4 py-3 bg-concrete-white border-transparent rounded-xl focus:bg-white focus:ring-2 focus:ring-blueprint-blue focus:border-transparent transition-all" />
+                        </div>
+                        
+                        <div>
+                          <label className="block text-sm font-medium text-graphite-black mb-3">Have you ever lost money on a project back home due to mismanagement or fraud?</label>
+                          <div className="grid grid-cols-3 gap-3">
+                            {['yes', 'no', 'unsure'].map(value => (
+                              <label key={value} className="cursor-pointer">
+                                <input type="radio" {...register('lossExperience')} value={value} className="peer sr-only" />
+                                <div className="text-center px-4 py-3 text-sm font-medium rounded-xl border border-gray-200 bg-white text-steel-grey hover:bg-concrete-white peer-checked:border-blueprint-blue peer-checked:bg-blueprint-blue/5 peer-checked:text-blueprint-blue transition-all">
+                                  {value.charAt(0).toUpperCase() + value.slice(1)}
+                                </div>
+                              </label>
+                            ))}
+                          </div>
+                          {errors.lossExperience && <p className="text-sm text-alert-red mt-1.5">{errors.lossExperience.message}</p>}
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-medium text-graphite-black mb-1.5">Where do you feel you lack the most control?</label>
+                          <select {...register('controlGap')} className="block w-full px-4 py-3 bg-concrete-white border-transparent rounded-xl focus:bg-white focus:ring-2 focus:ring-blueprint-blue focus:border-transparent transition-all appearance-none cursor-pointer">
+                            <option value="">Select an option</option>
+                            <option value="payments">Payments & Funds</option>
+                            <option value="materials">Material Quality/Quantity</option>
+                            <option value="progress">Progress Tracking</option>
+                            <option value="communication">Communication</option>
+                          </select>
+                          {errors.controlGap && <p className="text-sm text-alert-red mt-1.5">{errors.controlGap.message}</p>}
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-medium text-graphite-black mb-1.5">Roughly how much money do you estimate is lost or mismanaged monthly? (Optional)</label>
+                          <input type="text" {...register('monthlyLoss')} placeholder="e.g. $500" className="block w-full px-4 py-3 bg-concrete-white border-transparent rounded-xl focus:bg-white focus:ring-2 focus:ring-blueprint-blue focus:border-transparent transition-all" />
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-medium text-graphite-black mb-1.5">How urgently do you need a solution like ConSync?</label>
+                          <select {...register('urgency')} className="block w-full px-4 py-3 bg-concrete-white border-transparent rounded-xl focus:bg-white focus:ring-2 focus:ring-blueprint-blue focus:border-transparent transition-all appearance-none cursor-pointer">
+                            <option value="">Select urgency</option>
+                            <option value="immediate">Immediately</option>
+                            <option value="1-3months">1-3 Months</option>
+                            <option value="later">Sometime later</option>
+                          </select>
+                          {errors.urgency && <p className="text-sm text-alert-red mt-1.5">{errors.urgency.message}</p>}
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-medium text-graphite-black mb-3">Are you willing to use an escrow system to secure your project funds?</label>
+                          <div className="grid grid-cols-3 gap-3">
+                            {['yes', 'maybe', 'no'].map(value => (
+                              <label key={value} className="cursor-pointer">
+                                <input type="radio" {...register('escrowWillingness')} value={value} className="peer sr-only" />
+                                <div className="text-center px-4 py-3 text-sm font-medium rounded-xl border border-gray-200 bg-white text-steel-grey hover:bg-concrete-white peer-checked:border-blueprint-blue peer-checked:bg-blueprint-blue/5 peer-checked:text-blueprint-blue transition-all">
+                                  {value.charAt(0).toUpperCase() + value.slice(1)}
+                                </div>
+                              </label>
+                            ))}
+                          </div>
+                          {errors.escrowWillingness && <p className="text-sm text-alert-red mt-1.5">{errors.escrowWillingness.message}</p>}
                         </div>
                       </motion.div>
                     )}
