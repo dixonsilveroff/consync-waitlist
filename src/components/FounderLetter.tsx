@@ -27,18 +27,18 @@ export default function FounderLetter() {
           <div className="lg:col-span-7 max-w-2xl">
             <Quote className="w-12 h-12 text-blueprint-blue/20 mb-6" />
             <h2 className="text-3xl md:text-4xl font-bold text-graphite-black mb-8 font-poppins tracking-tight">
-              A commitment to your financial freedom.
+              A Letter to the Diaspora Investor
             </h2>
             
             <div className="space-y-6 text-lg text-steel-grey font-light leading-relaxed">
               <p>
-                As someone who has navigated the complexities of international finance firsthand, I understand the profound frustrations that come with managing money across borders. The dream of building a home, investing in property, or running a business in a different country often clashes with the harsh reality of inefficient systems and hidden charges.
+                I am a software engineer and a civil engineering student. I have spent enough time on Nigerian construction sites to know exactly how the 'trust deficit' works.
               </p>
               <p>
-                We built ConSync to solve these exact problems. Our mission is to empower the diaspora community by providing a seamless, secure, and transparent financial platform that bridges the gap between countries. Your hard-earned money should work for you, not get lost in a web of intermediaries.
+                Contractors stop work because of payment lags. Clients lose millions because of 'Oga' promises that don't match the reality on the ground. I didn't build ConSync to be another project management app. I built it to be a financial control system.
               </p>
               <p>
-                ConSync is more than just a payment platform—we're leveraging cutting-edge technology to build a system tailored to the unique needs of individuals operating in a globalized world. Join us on this journey to redefine borderless banking.
+                My goal is simple: You should only pay for what has actually been built—verified by data, not just a phone call. We are moving slowly to ensure the tech is as solid as the structures you're trying to build. Join the waitlist if you're ready to stop guessing and start controlling.
               </p>
             </div>
 

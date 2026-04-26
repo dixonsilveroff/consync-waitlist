@@ -64,7 +64,7 @@ export default function WaitlistForm() {
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-graphite-black font-poppins tracking-tight mb-4">Request Access</h2>
-            <p className="text-steel-grey text-lg font-light">Join an exclusive list of individuals redefining global finance.</p>
+            <p className="text-steel-grey text-lg font-light">Get early access to control your project payments.</p>
           </div>
 
           <div className="bg-white rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 p-8 md:p-12">

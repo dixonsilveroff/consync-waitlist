@@ -4,18 +4,18 @@ export default function SystemExplanation() {
   const features = [
     {
       icon: <ShieldCheck className="h-8 w-8 text-blueprint-blue" />,
-      title: 'Escrow Shield',
-      description: 'Your funds are held in a secure escrow account until all project milestones are met and verified, ensuring your money is 100% safe.',
+      title: 'The Escrow Shield',
+      description: 'Your funds stay in a secure, multi-party escrow. The contractor sees the money is there, but they cannot touch it until the work is verified. This eliminates "Payment Lag" for them and "Fraud Risk" for you.',
     },
     {
       icon: <Filter className="h-8 w-8 text-blueprint-blue" />,
-      title: 'Verification Triage',
-      description: 'Our system rigorously verifies every transaction and milestone, releasing funds only when work is completed to your exact specifications.',
+      title: 'The Verification Triage',
+      description: 'We don\'t take anyone\'s word for it. Every milestone requires a GPS-stamped, timestamped photo that passes our AI and human review before a single Naira is released. If the lintel isn\'t reached, the money doesn\'t move.',
     },
     {
       icon: <TrendingUp className="h-8 w-8 text-blueprint-blue" />,
-      title: 'Inflation Shield',
-      description: 'Protect your capital from currency devaluation with our stable, asset-backed digital currency, keeping your project budget firmly intact.',
+      title: 'The Inflation Shield',
+      description: 'Lock in material prices today. We release procurement funds the moment a project starts so your budget doesn\'t get eaten by Nigeria\'s cement price swings.',
     },
   ];
 
@@ -25,7 +25,7 @@ export default function SystemExplanation() {
         <div className="text-center max-w-3xl mx-auto mb-20">
           <h2 className="text-sm font-semibold text-blueprint-blue tracking-widest uppercase mb-3">Core Infrastructure</h2>
           <h3 className="text-4xl md:text-5xl font-bold text-graphite-black font-poppins tracking-tight">
-            Built for total trust and <br className="hidden sm:block"/> undeniable transparency.
+            How ConSync Enforces Reality
           </h3>
           <p className="mt-6 text-lg text-steel-grey font-light">
             We've engineered ConSync from the ground up to protect your interests, securing your capital across borders with military-grade precision.

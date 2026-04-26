@@ -24,11 +24,11 @@ export default function Hero() {
           </div>
           
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-graphite-black tracking-tight font-poppins leading-[1.1] mb-6">
-            The future of <span className="text-transparent bg-clip-text bg-gradient-to-r from-blueprint-blue to-highlight-blue">borderless banking</span> <br className="hidden md:block"/> and seamless payments.
+            You aren’t building a house in Nigeria. <br className="hidden md:block"/> You’re <span className="text-transparent bg-clip-text bg-gradient-to-r from-blueprint-blue to-highlight-blue">funding a black hole.</span>
           </h1>
           
           <p className="text-lg md:text-xl text-steel-grey max-w-2xl mx-auto mb-10 leading-relaxed font-light">
-            With access to foreign bank accounts, seamless payments, and competitive exchange rates, ConSync empowers you to expand your financial reach and access new markets like never before.
+            Sending money home via WhatsApp promises and unverified photos isn't "managing a project"—it's gambling with your life savings. If you can’t verify the work from where you’re sitting right now, you aren’t in control.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

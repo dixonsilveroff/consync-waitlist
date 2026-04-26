@@ -13,6 +13,7 @@ export default function Header() {
                   src="/ConSync Logo Transparent.png"
                   alt="ConSync Logo"
                   fill
+                  sizes="40px"
                   className="object-contain"
                   priority
                 />
