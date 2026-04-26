@@ -8,17 +8,16 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="relative w-10 h-10 overflow-hidden rounded-xl transition-transform group-hover:scale-105">
+              <div className="relative w-40 h-12 transition-transform group-hover:scale-105">
                 <Image
                   src="/ConSync Logo Transparent.png"
                   alt="ConSync Logo"
                   fill
-                  sizes="40px"
-                  className="object-contain"
+                  sizes="160px"
+                  className="object-contain object-left"
                   priority
                 />
               </div>
-              <span className="text-2xl font-bold text-graphite-black tracking-tight font-poppins">ConSync</span>
             </Link>
           </div>
           <nav className="hidden md:flex items-center space-x-1">
