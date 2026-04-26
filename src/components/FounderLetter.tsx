@@ -1,5 +1,8 @@
+"use client";
+
 import Image from 'next/image';
 import { Quote } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function FounderLetter() {
   return (
@@ -10,7 +13,13 @@ export default function FounderLetter() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           
-          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+          <motion.div 
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="lg:col-span-5 flex justify-center lg:justify-end"
+          >
             <div className="relative">
               {/* Image Container with subtle border and shadow */}
               <div className="w-72 h-96 bg-steel-grey/10 rounded-2xl overflow-hidden relative shadow-2xl border border-gray-100">
@@ -22,9 +31,15 @@ export default function FounderLetter() {
               {/* Decorative accent block */}
               <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-blueprint-blue rounded-2xl -z-10"></div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="lg:col-span-7 max-w-2xl">
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="lg:col-span-7 max-w-2xl"
+          >
             <Quote className="w-12 h-12 text-blueprint-blue/20 mb-6" />
             <h2 className="text-3xl md:text-4xl font-bold text-graphite-black mb-8 font-poppins tracking-tight">
               A Letter to the Diaspora Investor
@@ -46,7 +61,7 @@ export default function FounderLetter() {
               <p className="font-bold text-graphite-black font-poppins text-xl">Dixon Silveroff</p>
               <p className="text-blueprint-blue text-sm uppercase tracking-widest font-semibold mt-1">Founder, ConSync</p>
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </div>

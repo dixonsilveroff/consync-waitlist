@@ -52,12 +52,16 @@ export default function Hero() {
       >
         <div className="aspect-[21/9] rounded-2xl bg-white/40 border border-white/60 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] backdrop-blur-xl overflow-hidden flex items-center justify-center relative">
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/20"></div>
-          {/* Abstract representation of the network/globe from your inspiration */}
-          <div className="w-[400px] h-[400px] absolute opacity-10">
+          {/* Abstract representation of the network/globe */}
+          <motion.div 
+            animate={{ y: [0, -15, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            className="w-[400px] h-[400px] absolute opacity-10"
+          >
             <div className="absolute inset-0 border-[1px] border-blueprint-blue rounded-full rounded-tr-none rotate-45"></div>
             <div className="absolute inset-4 border-[1px] border-blueprint-blue rounded-full rounded-bl-none -rotate-12"></div>
             <div className="absolute inset-8 border-[1px] border-blueprint-blue rounded-full border-dashed animate-[spin_20s_linear_infinite]"></div>
-          </div>
+          </motion.div>
         </div>
       </motion.div>
     </section>

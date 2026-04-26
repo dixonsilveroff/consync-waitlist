@@ -61,7 +61,13 @@ export default function WaitlistForm() {
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-highlight-blue/5 rounded-full blur-[100px] pointer-events-none"></div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-2xl mx-auto">
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="max-w-2xl mx-auto"
+        >
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-graphite-black font-poppins tracking-tight mb-4">Request Access</h2>
             <p className="text-steel-grey text-lg font-light">Get early access to control your project payments.</p>
@@ -220,7 +226,7 @@ export default function WaitlistForm() {
               </>
             )}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
