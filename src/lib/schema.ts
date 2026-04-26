@@ -24,10 +24,10 @@ export const waitlistSchema = z.object({
   }),
 
   budget: z.enum([
-    "5-20",
-    "20-50",
-    "50-100",
-    "100+"
+    "5m-20m",
+    "20m-50m",
+    "50m-100m",
+    "100m+"
   ], {
     errorMap: () => ({ message: "Please select a budget." })
   }),

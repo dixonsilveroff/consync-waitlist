@@ -169,13 +169,13 @@ export default function WaitlistForm() {
                           {errors.projectType && <p className="text-sm text-alert-red mt-1.5">{errors.projectType.message}</p>}
                         </div>
                         <div>
-                          <label className="block text-sm font-medium text-graphite-black mb-1.5">Estimated Budget (USD)</label>
+                          <label className="block text-sm font-medium text-graphite-black mb-1.5">Estimated Budget (Naira)</label>
                           <select {...register('budget')} className="block w-full px-4 py-3 bg-concrete-white border-transparent rounded-xl focus:bg-white focus:ring-2 focus:ring-blueprint-blue focus:border-transparent transition-all appearance-none cursor-pointer">
                             <option value="">Select a budget range</option>
-                            <option value="5-20">$5,000 - $20,000</option>
-                            <option value="20-50">$20,000 - $50,000</option>
-                            <option value="50-100">$50,000 - $100,000</option>
-                            <option value="100+">$100,000+</option>
+                            <option value="5m-20m">₦5 Million - ₦20 Million</option>
+                            <option value="20m-50m">₦20 Million - ₦50 Million</option>
+                            <option value="50m-100m">₦50 Million - ₦100 Million</option>
+                            <option value="100m+">₦100 Million+</option>
                           </select>
                           {errors.budget && <p className="text-sm text-alert-red mt-1.5">{errors.budget.message}</p>}
                         </div>
