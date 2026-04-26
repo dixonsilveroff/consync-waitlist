@@ -21,15 +21,15 @@ export default function Header() {
             </Link>
           </div>
           <nav className="hidden md:flex items-center space-x-1">
-            <Link href="#team" className="px-4 py-2 text-sm font-medium text-steel-grey hover:text-blueprint-blue hover:bg-blueprint-blue/5 rounded-full transition-colors">
+            <Link href="/#team" className="px-4 py-2 text-sm font-medium text-steel-grey hover:text-blueprint-blue hover:bg-blueprint-blue/5 rounded-full transition-colors">
               Team
             </Link>
-            <Link href="#features" className="px-4 py-2 text-sm font-medium text-steel-grey hover:text-blueprint-blue hover:bg-blueprint-blue/5 rounded-full transition-colors">
+            <Link href="/#features" className="px-4 py-2 text-sm font-medium text-steel-grey hover:text-blueprint-blue hover:bg-blueprint-blue/5 rounded-full transition-colors">
               Features
             </Link>
           </nav>
           <div className="flex items-center">
-            <Link href="#waitlist" className="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-sm font-semibold text-white bg-blueprint-blue hover:bg-highlight-blue shadow-md hover:shadow-lg hover:shadow-blueprint-blue/20 transition-all active:scale-95">
+            <Link href="/#waitlist" className="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-sm font-semibold text-white bg-blueprint-blue hover:bg-highlight-blue shadow-md hover:shadow-lg hover:shadow-blueprint-blue/20 transition-all active:scale-95">
               Join waitlist
             </Link>
           </div>

@@ -25,16 +25,16 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-6 font-poppins tracking-wide">Platform</h4>
             <ul className="space-y-4 text-sm text-gray-400 font-light">
-              <li><Link href="#features" className="hover:text-white transition-colors">Features</Link></li>
-              <li><Link href="#team" className="hover:text-white transition-colors">Our Story</Link></li>
-              <li><Link href="#waitlist" className="hover:text-white transition-colors">Join Waitlist</Link></li>
+              <li><Link href="/#features" className="hover:text-white transition-colors">Features</Link></li>
+              <li><Link href="/#team" className="hover:text-white transition-colors">Our Story</Link></li>
+              <li><Link href="/#waitlist" className="hover:text-white transition-colors">Join Waitlist</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="text-white font-semibold mb-6 font-poppins tracking-wide">Legal</h4>
             <ul className="space-y-4 text-sm text-gray-400 font-light">
-              <li><Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Terms of Service</Link></li>
+              <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+              {/* <li><Link href="#" className="hover:text-white transition-colors">Terms of Service</Link></li> */}
             </ul>
           </div>
         </div>
