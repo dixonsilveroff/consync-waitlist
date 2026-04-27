@@ -1,4 +1,8 @@
 export type AnalyticsProps = Record<string, string | number | boolean | null | undefined>;
+export type AnalyticsConsentStatus = 'granted' | 'denied' | 'unset';
+
+export const ANALYTICS_CONSENT_STORAGE_KEY = 'consync_analytics_consent_v1';
+export const ANALYTICS_CONSENT_EVENT = 'consync:analytics-consent-changed';
 
 type AnalyticsPayload = {
   event: string;
@@ -12,6 +16,52 @@ export type AnalyticsAdapter = {
 };
 
 const adapters = new Map<string, AnalyticsAdapter>();
+
+export function getAnalyticsConsentStatus(): AnalyticsConsentStatus {
+  if (typeof window === 'undefined') return 'unset';
+
+  const value = window.localStorage.getItem(ANALYTICS_CONSENT_STORAGE_KEY);
+  if (value === 'granted' || value === 'denied') return value;
+  return 'unset';
+}
+
+export function hasAnalyticsConsent() {
+  return getAnalyticsConsentStatus() === 'granted';
+}
+
+export function setAnalyticsConsent(status: Exclude<AnalyticsConsentStatus, 'unset'>) {
+  if (typeof window === 'undefined') return;
+
+  window.localStorage.setItem(ANALYTICS_CONSENT_STORAGE_KEY, status);
+  window.dispatchEvent(
+    new CustomEvent(ANALYTICS_CONSENT_EVENT, {
+      detail: { status },
+    })
+  );
+}
+
+export function subscribeAnalyticsConsent(listener: (status: AnalyticsConsentStatus) => void) {
+  if (typeof window === 'undefined') {
+    return () => {};
+  }
+
+  const handler = (event: Event) => {
+    const customEvent = event as CustomEvent<{ status?: AnalyticsConsentStatus }>;
+    listener(customEvent.detail?.status ?? getAnalyticsConsentStatus());
+  };
+
+  const storageHandler = () => {
+    listener(getAnalyticsConsentStatus());
+  };
+
+  window.addEventListener(ANALYTICS_CONSENT_EVENT, handler);
+  window.addEventListener('storage', storageHandler);
+
+  return () => {
+    window.removeEventListener(ANALYTICS_CONSENT_EVENT, handler);
+    window.removeEventListener('storage', storageHandler);
+  };
+}
 
 export function registerAnalyticsAdapter(adapter: AnalyticsAdapter) {
   adapters.set(adapter.id, adapter);
@@ -54,7 +104,7 @@ if (typeof window !== 'undefined') {
 }
 
 export function trackEvent(event: string, properties: AnalyticsProps = {}) {
-  if (typeof window === 'undefined') return;
+  if (typeof window === 'undefined' || !hasAnalyticsConsent()) return;
 
   const payload: AnalyticsPayload = {
     event,

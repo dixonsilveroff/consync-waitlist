@@ -40,6 +40,7 @@ export default function PrivacyPolicy() {
                   <li><strong>Identity Data:</strong> Full name, email address, phone number, and current location.</li>
                   <li><strong>Project Context:</strong> Project status, project location, project type, and estimated budget.</li>
                   <li><strong>Readiness & Feedback:</strong> Current management plans, past loss experiences, control gaps, and willingness to use an escrow system.</li>
+                  <li><strong>Usage & Event Data (with consent):</strong> Page views, CTA clicks, and waitlist funnel events (such as step progression and submission outcomes) captured through PostHog and our analytics layer.</li>
                 </ul>
               </section>
 
@@ -50,32 +51,43 @@ export default function PrivacyPolicy() {
                   <li>To manage our waitlist and securely notify you when ConSync early access is available.</li>
                   <li>To understand the specific needs, pain points, and demographics of the diaspora community to improve our platform architecture.</li>
                   <li>To communicate with you regarding updates, features, and relevant news about ConSync's development.</li>
+                  <li>To measure product and marketing effectiveness by analyzing event-level behavior (for example, form drop-off points and conversion paths) so we can improve onboarding and user experience.</li>
                 </ul>
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold text-graphite-black font-poppins mb-4">4. How We Share Your Information</h2>
+                <h2 className="text-2xl font-bold text-graphite-black font-poppins mb-4">4. Cookies and Analytics Technologies</h2>
+                <p className="mb-4">
+                  We use PostHog as our analytics provider to better understand how visitors interact with our website and waitlist flow. PostHog may use cookies or similar local storage technologies to collect event and session data when analytics consent is granted.
+                </p>
+                <p>
+                  We use this data to monitor performance, identify friction in the waitlist process, and prioritize improvements. You can accept or decline analytics collection through our consent banner. If you decline, non-essential analytics tracking is disabled.
+                </p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl font-bold text-graphite-black font-poppins mb-4">5. How We Share Your Information</h2>
                 <p>
                   We do not sell, rent, or trade your personal information to third parties. We only share your data with trusted, compliant service providers (such as secure database and hosting services like Airtable and Vercel) strictly for the purpose of securely storing waitlist data and facilitating our communications with you. These providers are bound by strict confidentiality and data protection agreements.
                 </p>
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold text-graphite-black font-poppins mb-4">5. Data Security</h2>
+                <h2 className="text-2xl font-bold text-graphite-black font-poppins mb-4">6. Data Security</h2>
                 <p>
                   Trust is the core of ConSync. We implement appropriate technical and organizational security measures—including data encryption and secure server environments—designed to protect the security of any personal information we process. However, please note that no electronic transmission over the internet or information storage technology can be guaranteed to be 100% secure.
                 </p>
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold text-graphite-black font-poppins mb-4">6. Your Privacy Rights</h2>
+                <h2 className="text-2xl font-bold text-graphite-black font-poppins mb-4">7. Your Privacy Rights</h2>
                 <p>
                   Depending on your location (such as under the GDPR, CCPA, or NDPR), you may have rights regarding your personal data, including the right to access, correct, or request the deletion of your personal information from our waitlist systems. To exercise these rights, please contact us.
                 </p>
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold text-graphite-black font-poppins mb-4">7. Contact Us</h2>
+                <h2 className="text-2xl font-bold text-graphite-black font-poppins mb-4">8. Contact Us</h2>
                 <p>
                   If you have questions or comments about this Privacy Policy, or if you would like to request the removal of your data from our waitlist, please contact us at: <a href="mailto:support@consync.app" className="text-blueprint-blue font-medium hover:underline transition-all">support@consync.app</a>.
                 </p>

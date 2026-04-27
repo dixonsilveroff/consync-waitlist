@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import PostHogBootstrap from "@/components/PostHogBootstrap";
+import AnalyticsConsentBanner from "@/components/AnalyticsConsentBanner";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -29,6 +30,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${poppins.variable} font-inter`}>
         <PostHogBootstrap />
         {children}
+        <AnalyticsConsentBanner />
       </body>
     </html>
   );
