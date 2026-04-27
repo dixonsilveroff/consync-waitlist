@@ -42,28 +42,6 @@ export default function Hero() {
           </div>
         </motion.div>
       </div>
-
-      {/* Decorative Graphic Area */}
-      <motion.div 
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.3 }}
-        className="relative z-10 w-full max-w-5xl mx-auto mt-20 px-4"
-      >
-        <div className="aspect-21/9 rounded-2xl bg-white/40 border border-white/60 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] backdrop-blur-xl overflow-hidden flex items-center justify-center relative">
-          <div className="absolute inset-0 bg-linear-to-b from-transparent to-white/20"></div>
-          {/* Abstract representation of the network/globe */}
-          <motion.div 
-            animate={{ y: [0, -15, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="w-100 h-100 absolute opacity-10"
-          >
-            <div className="absolute inset-0 border border-blueprint-blue rounded-full rounded-tr-none rotate-45"></div>
-            <div className="absolute inset-4 border border-blueprint-blue rounded-full rounded-bl-none -rotate-12"></div>
-            <div className="absolute inset-8 border border-blueprint-blue rounded-full border-dashed animate-[spin_20s_linear_infinite]"></div>
-          </motion.div>
-        </div>
-      </motion.div>
     </section>
   );
 }
