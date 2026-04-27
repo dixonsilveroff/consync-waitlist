@@ -1,5 +1,8 @@
+"use client";
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { openAnalyticsConsentPrompt } from '@/lib/analytics';
 
 export default function Footer() {
   return (
@@ -34,6 +37,15 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-6 font-poppins tracking-wide">Legal</h4>
             <ul className="space-y-4 text-sm text-gray-400 font-light">
               <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+              <li>
+                <button
+                  type="button"
+                  onClick={openAnalyticsConsentPrompt}
+                  className="hover:text-white transition-colors"
+                >
+                  Privacy Settings
+                </button>
+              </li>
               {/* <li><Link href="#" className="hover:text-white transition-colors">Terms of Service</Link></li> */}
             </ul>
           </div>

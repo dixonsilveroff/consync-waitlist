@@ -3,6 +3,7 @@ export type AnalyticsConsentStatus = 'granted' | 'denied' | 'unset';
 
 export const ANALYTICS_CONSENT_STORAGE_KEY = 'consync_analytics_consent_v1';
 export const ANALYTICS_CONSENT_EVENT = 'consync:analytics-consent-changed';
+export const ANALYTICS_CONSENT_OPEN_EVENT = 'consync:analytics-consent-open';
 
 type AnalyticsPayload = {
   event: string;
@@ -38,6 +39,12 @@ export function setAnalyticsConsent(status: Exclude<AnalyticsConsentStatus, 'uns
       detail: { status },
     })
   );
+}
+
+export function openAnalyticsConsentPrompt() {
+  if (typeof window === 'undefined') return;
+
+  window.dispatchEvent(new CustomEvent(ANALYTICS_CONSENT_OPEN_EVENT));
 }
 
 export function subscribeAnalyticsConsent(listener: (status: AnalyticsConsentStatus) => void) {

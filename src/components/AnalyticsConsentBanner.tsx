@@ -2,13 +2,26 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { getAnalyticsConsentStatus, setAnalyticsConsent } from '@/lib/analytics';
+import {
+  ANALYTICS_CONSENT_OPEN_EVENT,
+  getAnalyticsConsentStatus,
+  setAnalyticsConsent,
+} from '@/lib/analytics';
 
 export default function AnalyticsConsentBanner() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     setIsVisible(getAnalyticsConsentStatus() === 'unset');
+
+    const openHandler = () => {
+      setIsVisible(true);
+    };
+
+    window.addEventListener(ANALYTICS_CONSENT_OPEN_EVENT, openHandler);
+    return () => {
+      window.removeEventListener(ANALYTICS_CONSENT_OPEN_EVENT, openHandler);
+    };
   }, []);
 
   if (!isVisible) return null;
