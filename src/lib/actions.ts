@@ -14,18 +14,18 @@ export async function submitWaitlistForm(data: WaitlistFormValues) {
   }
 
   try {
-    const apiKey = process.env.AIRTABLE_API_KEY;
+    const airtableToken = process.env.AIRTABLE_PAT || process.env.AIRTABLE_API_KEY;
     const baseId = process.env.AIRTABLE_BASE_ID;
     const tableName = process.env.AIRTABLE_TABLE_NAME || 'Waitlist';
 
-    if (!apiKey || !baseId) {
+    if (!airtableToken || !baseId) {
       return {
         success: false,
         message: 'Server is not configured for submissions yet.',
       };
     }
 
-    const base = new Airtable({ apiKey }).base(baseId);
+    const base = new Airtable({ apiKey: airtableToken }).base(baseId);
 
     const submission = parsedData.data;
     const fields = {

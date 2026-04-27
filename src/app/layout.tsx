@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
+import PostHogBootstrap from "@/components/PostHogBootstrap";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -25,7 +26,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} ${poppins.variable} font-inter`}>{children}</body>
+      <body className={`${inter.variable} ${poppins.variable} font-inter`}>
+        <PostHogBootstrap />
+        {children}
+      </body>
     </html>
   );
 }
