@@ -10,8 +10,8 @@ export const waitlistSchema = z.object({
     "current",
     "soon",
     "exploring"
-  ], {
-    errorMap: () => ({ message: "Please select a project status." })
+  ] as const, {
+    message: "Please select a project status."
   }),
 
   projectLocation: z.string().min(2, 'Project location is required.'),
@@ -19,8 +19,8 @@ export const waitlistSchema = z.object({
     "personal",
     "rental",
     "commercial"
-  ], {
-    errorMap: () => ({ message: "Please select a project type." })
+  ] as const, {
+    message: "Please select a project type."
   }),
 
   budget: z.enum([
@@ -28,8 +28,8 @@ export const waitlistSchema = z.object({
     "20m-50m",
     "50m-100m",
     "100m+"
-  ], {
-    errorMap: () => ({ message: "Please select a budget." })
+  ] as const, {
+    message: "Please select a budget."
   }),
 
   currentManagement: z.enum([
@@ -37,8 +37,8 @@ export const waitlistSchema = z.object({
     "contractor_relative",
     "supervisor",
     "none"
-  ], {
-    errorMap: () => ({ message: "Please select a management option." })
+  ] as const, {
+    message: "Please select a management option."
   }),
 
   verificationMethod: z.string().optional(),
@@ -47,8 +47,8 @@ export const waitlistSchema = z.object({
     "yes",
     "no",
     "unsure"
-  ], {
-    errorMap: () => ({ message: "Please select an option." })
+  ] as const, {
+    message: "Please select an option."
   }),
 
   controlGap: z.enum([
@@ -56,8 +56,8 @@ export const waitlistSchema = z.object({
     "materials",
     "progress",
     "communication"
-  ], {
-    errorMap: () => ({ message: "Please select a control gap." })
+  ] as const, {
+    message: "Please select a control gap."
   }),
 
   monthlyLoss: z.string().optional(),
@@ -66,16 +66,16 @@ export const waitlistSchema = z.object({
     "immediate",
     "1-3months",
     "later"
-  ], {
-    errorMap: () => ({ message: "Please select an urgency level." })
+  ] as const, {
+    message: "Please select an urgency level."
   }),
 
   escrowWillingness: z.enum([
     "yes",
     "maybe",
     "no"
-  ], {
-    errorMap: () => ({ message: "Please select an option." })
+  ] as const, {
+    message: "Please select an option."
   })
 });
 

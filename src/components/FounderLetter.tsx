@@ -8,7 +8,7 @@ export default function FounderLetter() {
   return (
     <section id="team" className="py-32 bg-white relative overflow-hidden">
       {/* Decorative background element */}
-      <div className="absolute left-0 bottom-0 w-[800px] h-[800px] bg-concrete-white rounded-full -translate-x-1/2 translate-y-1/2 opacity-50 pointer-events-none"></div>
+      <div className="absolute left-0 bottom-0 w-200 h-200 bg-concrete-white rounded-full -translate-x-1/2 translate-y-1/2 opacity-50 pointer-events-none"></div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">

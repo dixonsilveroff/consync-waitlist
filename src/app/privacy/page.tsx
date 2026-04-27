@@ -18,9 +18,9 @@ export default function PrivacyPolicy() {
     <div className="flex flex-col min-h-screen bg-concrete-white">
       <Header />
       
-      <main className="flex-grow pt-32 pb-20">
+      <main className="grow pt-32 pb-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-          <div className="bg-white rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 p-8 md:p-16">
+          <div className="bg-white rounded-4xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 p-8 md:p-16">
             <h1 className="text-4xl md:text-5xl font-bold text-graphite-black font-poppins mb-6 tracking-tight">Privacy Policy</h1>
             <p className="text-sm text-steel-grey mb-12 uppercase tracking-widest font-semibold">Last Updated: {lastUpdated}</p>
             

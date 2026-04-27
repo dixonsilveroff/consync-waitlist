@@ -58,7 +58,7 @@ export default function WaitlistForm() {
   return (
     <section id="waitlist" className="py-32 bg-concrete-white relative overflow-hidden">
       {/* Decorative Blur Elements */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-highlight-blue/5 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-125 h-125 bg-highlight-blue/5 rounded-full blur-[100px] pointer-events-none"></div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div 
@@ -73,7 +73,7 @@ export default function WaitlistForm() {
             <p className="text-steel-grey text-lg font-light">Get early access to control your project payments.</p>
           </div>
 
-          <div className="bg-white rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 p-8 md:p-12">
+          <div className="bg-white rounded-4xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 p-8 md:p-12">
             {submissionStatus ? (
               <motion.div 
                 initial={{ opacity: 0, scale: 0.95 }}

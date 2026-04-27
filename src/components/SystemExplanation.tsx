@@ -51,7 +51,7 @@ export default function SystemExplanation() {
               transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
               className="group relative p-8 bg-concrete-white rounded-3xl border border-gray-100 hover:border-blueprint-blue/20 transition-all duration-300 hover:shadow-2xl hover:shadow-blueprint-blue/5 hover:-translate-y-1"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-3xl pointer-events-none"></div>
+              <div className="absolute inset-0 bg-linear-to-br from-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-3xl pointer-events-none"></div>
               
               <div className="relative z-10">
                 <div className="w-16 h-16 mb-8 rounded-2xl bg-white border border-gray-100 shadow-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300">

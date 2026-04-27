@@ -14,7 +14,7 @@ export default function Footer() {
                   alt="ConSync Logo"
                   fill
                   sizes="160px"
-                  className="object-contain object-left brightness-0 invert"
+                  className="object-contain object-left"
                 />
               </div>
             </Link>

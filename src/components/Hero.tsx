@@ -8,8 +8,8 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-20 overflow-hidden bg-concrete-white">
       {/* Premium Background Grid & Glow */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blueprint-blue/10 rounded-full blur-[100px] opacity-70 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[40px_40px]"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-blueprint-blue/10 rounded-full blur-[100px] opacity-70 pointer-events-none"></div>
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
@@ -24,7 +24,7 @@ export default function Hero() {
           </div>
           
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-graphite-black tracking-tight font-poppins leading-[1.1] mb-6">
-            You aren’t building a house in Nigeria. <br className="hidden md:block"/> You’re <span className="text-transparent bg-clip-text bg-gradient-to-r from-blueprint-blue to-highlight-blue">funding a black hole.</span>
+            You aren’t building a house in Nigeria. <br className="hidden md:block"/> You’re <span className="text-transparent bg-clip-text bg-linear-to-r from-blueprint-blue to-highlight-blue">funding a black hole.</span>
           </h1>
           
           <p className="text-lg md:text-xl text-steel-grey max-w-2xl mx-auto mb-10 leading-relaxed font-light">
@@ -50,17 +50,17 @@ export default function Hero() {
         transition={{ duration: 1, delay: 0.3 }}
         className="relative z-10 w-full max-w-5xl mx-auto mt-20 px-4"
       >
-        <div className="aspect-[21/9] rounded-2xl bg-white/40 border border-white/60 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] backdrop-blur-xl overflow-hidden flex items-center justify-center relative">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/20"></div>
+        <div className="aspect-21/9 rounded-2xl bg-white/40 border border-white/60 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] backdrop-blur-xl overflow-hidden flex items-center justify-center relative">
+          <div className="absolute inset-0 bg-linear-to-b from-transparent to-white/20"></div>
           {/* Abstract representation of the network/globe */}
           <motion.div 
             animate={{ y: [0, -15, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="w-[400px] h-[400px] absolute opacity-10"
+            className="w-100 h-100 absolute opacity-10"
           >
-            <div className="absolute inset-0 border-[1px] border-blueprint-blue rounded-full rounded-tr-none rotate-45"></div>
-            <div className="absolute inset-4 border-[1px] border-blueprint-blue rounded-full rounded-bl-none -rotate-12"></div>
-            <div className="absolute inset-8 border-[1px] border-blueprint-blue rounded-full border-dashed animate-[spin_20s_linear_infinite]"></div>
+            <div className="absolute inset-0 border border-blueprint-blue rounded-full rounded-tr-none rotate-45"></div>
+            <div className="absolute inset-4 border border-blueprint-blue rounded-full rounded-bl-none -rotate-12"></div>
+            <div className="absolute inset-8 border border-blueprint-blue rounded-full border-dashed animate-[spin_20s_linear_infinite]"></div>
           </motion.div>
         </div>
       </motion.div>
