@@ -60,6 +60,18 @@ export default function FounderLetter() {
             <div className="mt-10 pt-8 border-t border-gray-100">
               <p className="font-bold text-graphite-black font-poppins text-xl">Victor Nwafor</p>
               <p className="text-blueprint-blue text-sm uppercase tracking-widest font-semibold mt-1">Founder, ConSync</p>
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                <span className="rounded-full border border-gray-200 bg-concrete-white px-3 py-1 text-xs font-semibold uppercase tracking-wide text-steel-grey">
+                  Software Engineer
+                </span>
+                <span className="rounded-full border border-gray-200 bg-concrete-white px-3 py-1 text-xs font-semibold uppercase tracking-wide text-steel-grey">
+                  Civil Engineering Professional
+                </span>
+                <span className="rounded-full border border-gray-200 bg-concrete-white px-3 py-1 text-xs font-semibold uppercase tracking-wide text-steel-grey">
+                  On-site Construction Experience
+                </span>
+              </div>
             </div>
           </motion.div>
 

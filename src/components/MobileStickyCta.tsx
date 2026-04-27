@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { trackEvent } from "@/lib/analytics";
 
 export default function MobileStickyCta() {
   const [hideCta, setHideCta] = useState(false);
@@ -27,6 +28,7 @@ export default function MobileStickyCta() {
     <div className="md:hidden fixed bottom-4 left-4 right-4 z-50">
       <Link
         href="/#waitlist"
+        onClick={() => trackEvent('cta_click', { source: 'mobile_sticky_cta' })}
         className="flex w-full items-center justify-center rounded-full bg-graphite-black px-6 py-3.5 text-sm font-semibold text-white shadow-xl shadow-black/20 transition-all hover:bg-blueprint-blue"
       >
         Join Waitlist

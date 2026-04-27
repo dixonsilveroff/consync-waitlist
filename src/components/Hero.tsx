@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import { trackEvent } from '@/lib/analytics';
 
 export default function Hero() {
   return (
@@ -32,11 +33,19 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="#waitlist" className="group flex items-center justify-center gap-2 px-8 py-4 w-full sm:w-auto text-base font-semibold text-white bg-graphite-black rounded-full shadow-xl hover:bg-blueprint-blue transition-all duration-300 hover:scale-105 active:scale-95">
+            <Link
+              href="#waitlist"
+              onClick={() => trackEvent('cta_click', { source: 'hero_primary_secure_spot' })}
+              className="group flex items-center justify-center gap-2 px-8 py-4 w-full sm:w-auto text-base font-semibold text-white bg-graphite-black rounded-full shadow-xl hover:bg-blueprint-blue transition-all duration-300 hover:scale-105 active:scale-95"
+            >
               Secure Your Spot
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
-            <Link href="#features" className="px-8 py-4 w-full sm:w-auto text-base font-semibold text-graphite-black bg-white border border-gray-200 rounded-full shadow-sm hover:bg-gray-50 transition-all duration-300">
+            <Link
+              href="#features"
+              onClick={() => trackEvent('cta_click', { source: 'hero_secondary_discover_how' })}
+              className="px-8 py-4 w-full sm:w-auto text-base font-semibold text-graphite-black bg-white border border-gray-200 rounded-full shadow-sm hover:bg-gray-50 transition-all duration-300"
+            >
               Discover How It Works
             </Link>
           </div>

@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { submitWaitlistForm } from '@/lib/actions';
 import { ArrowRight, ArrowLeft, CheckCircle2 } from 'lucide-react';
 import Link from 'next/link';
+import { trackEvent } from '@/lib/analytics';
 
 const steps = [
   { id: 1, name: 'Identity', fields: ['fullName', 'email', 'phone', 'location'] },
@@ -21,6 +22,8 @@ export default function WaitlistForm() {
   const [currentStep, setCurrentStep] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submissionStatus, setSubmissionStatus] = useState<{ success: boolean; message: string } | null>(null);
+  const [hasStartedForm, setHasStartedForm] = useState(false);
+  const [hasTrackedFormView, setHasTrackedFormView] = useState(false);
 
   const {
     register,
@@ -43,11 +46,40 @@ export default function WaitlistForm() {
 
       if (validatedDraft.success) {
         reset(validatedDraft.data);
+        trackEvent('waitlist_draft_restored');
       }
     } catch {
       localStorage.removeItem(WAITLIST_DRAFT_KEY);
     }
   }, [reset]);
+
+  useEffect(() => {
+    if (submissionStatus) return;
+    const step = steps[currentStep];
+    trackEvent('waitlist_step_viewed', {
+      stepId: step.id,
+      stepName: step.name,
+    });
+  }, [currentStep, submissionStatus]);
+
+  useEffect(() => {
+    const section = document.getElementById('waitlist');
+    if (!section || hasTrackedFormView) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          trackEvent('waitlist_form_viewed');
+          setHasTrackedFormView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, [hasTrackedFormView]);
 
   useEffect(() => {
     const subscription = watch((values) => {
@@ -63,10 +95,14 @@ export default function WaitlistForm() {
 
   const onSubmit = async (data: WaitlistFormValues) => {
     setIsSubmitting(true);
+    trackEvent('waitlist_submit_attempted');
     const result = await submitWaitlistForm(data);
     setSubmissionStatus(result);
     if (result.success) {
       localStorage.removeItem(WAITLIST_DRAFT_KEY);
+      trackEvent('waitlist_submit_success');
+    } else {
+      trackEvent('waitlist_submit_failed');
     }
     setIsSubmitting(false);
   };
@@ -75,13 +111,26 @@ export default function WaitlistForm() {
     reset();
     setCurrentStep(0);
     setSubmissionStatus(null);
+    setHasStartedForm(false);
     localStorage.removeItem(WAITLIST_DRAFT_KEY);
+    trackEvent('waitlist_form_reset');
   };
 
   const handleNext = async () => {
     const fields = steps[currentStep].fields;
     const output = await trigger(fields as any, { shouldFocus: true });
-    if (!output) return;
+    if (!output) {
+      trackEvent('waitlist_step_validation_failed', {
+        stepId: steps[currentStep].id,
+        stepName: steps[currentStep].name,
+      });
+      return;
+    }
+
+    trackEvent('waitlist_step_completed', {
+      stepId: steps[currentStep].id,
+      stepName: steps[currentStep].name,
+    });
 
     if (currentStep < steps.length - 1) {
       setCurrentStep(step => step + 1);
@@ -167,7 +216,16 @@ export default function WaitlistForm() {
                   </div>
                 </div>
 
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                <form
+                  onSubmit={handleSubmit(onSubmit)}
+                  onFocusCapture={() => {
+                    if (!hasStartedForm) {
+                      setHasStartedForm(true);
+                      trackEvent('waitlist_form_started');
+                    }
+                  }}
+                  className="space-y-6"
+                >
                   <AnimatePresence mode="wait">
                     {/* Step 1: Identity */}
                     {currentStep === 0 && (
