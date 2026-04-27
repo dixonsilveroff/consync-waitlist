@@ -40,6 +40,18 @@ export default function Hero() {
               Discover How It Works
             </Link>
           </div>
+
+          <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
+            <div className="rounded-full border border-gray-200 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-wider text-steel-grey">
+              Escrow-first payouts
+            </div>
+            <div className="rounded-full border border-gray-200 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-wider text-steel-grey">
+              Verification before release
+            </div>
+            <div className="rounded-full border border-gray-200 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-wider text-steel-grey">
+              Built for diaspora builders
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

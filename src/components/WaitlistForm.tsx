@@ -3,16 +3,19 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { waitlistSchema, WaitlistFormValues } from '@/lib/schema';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { submitWaitlistForm } from '@/lib/actions';
 import { ArrowRight, ArrowLeft, CheckCircle2 } from 'lucide-react';
+import Link from 'next/link';
 
 const steps = [
   { id: 1, name: 'Identity', fields: ['fullName', 'email', 'phone', 'location'] },
   { id: 2, name: 'Context', fields: ['projectStatus', 'projectLocation', 'projectType', 'budget', 'currentManagement'] },
   { id: 3, name: 'Readiness', fields: ['verificationMethod', 'lossExperience', 'controlGap', 'monthlyLoss', 'urgency', 'escrowWillingness'] },
 ];
+
+const WAITLIST_DRAFT_KEY = 'consync_waitlist_draft_v1';
 
 export default function WaitlistForm() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -23,16 +26,56 @@ export default function WaitlistForm() {
     register,
     handleSubmit,
     trigger,
+    reset,
+    watch,
     formState: { errors },
   } = useForm<WaitlistFormValues>({
     resolver: zodResolver(waitlistSchema),
   });
 
+  useEffect(() => {
+    try {
+      const savedDraft = localStorage.getItem(WAITLIST_DRAFT_KEY);
+      if (!savedDraft) return;
+
+      const parsedDraft = JSON.parse(savedDraft);
+      const validatedDraft = waitlistSchema.partial().safeParse(parsedDraft);
+
+      if (validatedDraft.success) {
+        reset(validatedDraft.data);
+      }
+    } catch {
+      localStorage.removeItem(WAITLIST_DRAFT_KEY);
+    }
+  }, [reset]);
+
+  useEffect(() => {
+    const subscription = watch((values) => {
+      try {
+        localStorage.setItem(WAITLIST_DRAFT_KEY, JSON.stringify(values));
+      } catch {
+        // Ignore quota/storage errors silently.
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, [watch]);
+
   const onSubmit = async (data: WaitlistFormValues) => {
     setIsSubmitting(true);
     const result = await submitWaitlistForm(data);
     setSubmissionStatus(result);
+    if (result.success) {
+      localStorage.removeItem(WAITLIST_DRAFT_KEY);
+    }
     setIsSubmitting(false);
+  };
+
+  const handleStartNewSubmission = () => {
+    reset();
+    setCurrentStep(0);
+    setSubmissionStatus(null);
+    localStorage.removeItem(WAITLIST_DRAFT_KEY);
   };
 
   const handleNext = async () => {
@@ -87,6 +130,24 @@ export default function WaitlistForm() {
                   {submissionStatus.success ? "You're on the list" : "Something went wrong"}
                 </h3>
                 <p className="text-steel-grey">{submissionStatus.message}</p>
+
+                <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+                  {submissionStatus.success && (
+                    <Link
+                      href="/#team"
+                      className="inline-flex items-center justify-center rounded-full bg-graphite-black px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-blueprint-blue"
+                    >
+                      Read the founder letter
+                    </Link>
+                  )}
+                  <button
+                    type="button"
+                    onClick={handleStartNewSubmission}
+                    className="inline-flex items-center justify-center rounded-full border border-gray-200 bg-white px-6 py-3 text-sm font-semibold text-graphite-black transition-all hover:bg-gray-50"
+                  >
+                    Submit another response
+                  </button>
+                </div>
               </motion.div>
             ) : (
               <>
@@ -284,6 +345,14 @@ export default function WaitlistForm() {
                       {!isSubmitting && currentStep !== steps.length - 1 && <ArrowRight className="w-4 h-4" />}
                     </button>
                   </div>
+
+                  <p className="text-center text-xs leading-relaxed text-steel-grey">
+                    We only use your data to qualify and contact waitlist members. We never sell personal data. See our{' '}
+                    <Link href="/privacy" className="font-semibold text-blueprint-blue hover:underline">
+                      Privacy Policy
+                    </Link>
+                    .
+                  </p>
                 </form>
               </>
             )}
