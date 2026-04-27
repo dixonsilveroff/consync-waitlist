@@ -26,7 +26,7 @@ export default function FounderLetter() {
                 <div className="absolute inset-0 flex items-center justify-center text-steel-grey/40 font-poppins text-sm tracking-widest uppercase">
                   Portrait
                 </div>
-                <Image src="/me.png" alt="Founder" fill className="object-cover" />
+                <Image src="/me.png" alt="Founder" fill sizes="288px" className="object-cover" />
               </div>
               {/* Decorative accent block */}
               <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-blueprint-blue rounded-2xl -z-10"></div>

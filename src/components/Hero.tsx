@@ -23,7 +23,7 @@ export default function Hero() {
             <span className="text-xs font-semibold text-steel-grey uppercase tracking-wider">Early Access Now Open</span>
           </div>
           
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-graphite-black tracking-tight font-poppins leading-[1.1] mb-6">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-graphite-black tracking-tight font-poppins leading-[1.1] mb-6">
             You aren’t building a house in Nigeria. <br className="hidden md:block"/> You’re <span className="text-transparent bg-clip-text bg-linear-to-r from-blueprint-blue to-highlight-blue">funding a black hole.</span>
           </h1>
           
