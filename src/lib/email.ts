@@ -23,7 +23,7 @@ export async function sendWelcomeEmail(data: {
   );
 
   const { error } = await resend.emails.send({
-    from: 'ConSync <hello@waitlist.consync.app>',
+    from: 'ConSync <waitlist@consync.app>',
     to: data.email,
     subject: `You're in, ${data.fullName.split(' ')[0]} 🎉`,
     html,
