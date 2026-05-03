@@ -2,6 +2,7 @@
 
 import { waitlistSchema, WaitlistFormValues } from './schema';
 import Airtable from 'airtable';
+import { sendWelcomeEmail } from './email';
 
 export async function submitWaitlistForm(data: WaitlistFormValues) {
   const parsedData = waitlistSchema.safeParse(data);
@@ -57,6 +58,14 @@ export async function submitWaitlistForm(data: WaitlistFormValues) {
         fields: sanitizedFields,
       },
     ]);
+
+    // Send welcome email (best-effort — does not affect the signup response)
+    await sendWelcomeEmail({
+      fullName: submission.fullName,
+      email: submission.email,
+      projectType: submission.projectType,
+      urgency: submission.urgency,
+    });
 
     return {
       success: true,
