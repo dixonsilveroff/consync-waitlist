@@ -12,7 +12,7 @@ import {
   Section,
   Text,
 } from '@react-email/components';
-import { ClipboardList, Package, Share2, ShieldCheck, Sparkles, Users } from 'lucide-react';
+
 import * as React from 'react';
 
 interface WelcomeEmailProps {
@@ -41,22 +41,47 @@ const shareBody = encodeURIComponent(
 );
 const shareHref = `mailto:?subject=${shareSubject}&body=${shareBody}`;
 
-// Feature items: icon + label
+// Feature items: icon + label (inline SVGs — lucide-react is client-only and cannot run in server actions)
 const features: { icon: React.ReactNode; text: string }[] = [
   {
-    icon: <ClipboardList size={16} color="#0ea5e9" strokeWidth={2} />,
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+        <path d="M12 11h4" /><path d="M12 16h4" /><path d="M8 11h.01" /><path d="M8 16h.01" />
+      </svg>
+    ),
     text: 'Real-time milestone tracking — know exactly what stage your project is at',
   },
   {
-    icon: <ShieldCheck size={16} color="#0ea5e9" strokeWidth={2} />,
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        <polyline points="9 12 11 14 15 10" />
+      </svg>
+    ),
     text: 'Payment escrow — funds only release when work is verified',
   },
   {
-    icon: <Package size={16} color="#0ea5e9" strokeWidth={2} />,
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M16.5 9.4l-9-5.19" />
+        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+        <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+        <line x1="12" y1="22.08" x2="12" y2="12" />
+      </svg>
+    ),
     text: 'Materials visibility — track what was ordered, delivered, and used',
   },
   {
-    icon: <Users size={16} color="#0ea5e9" strokeWidth={2} />,
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+      </svg>
+    ),
     text: 'Contractor accountability — no more guessing games',
   },
 ];
@@ -81,12 +106,19 @@ export default function WelcomeEmail({ fullName, projectType, urgency }: Welcome
           <Section style={card}>
             <Heading style={heading}>
               You&apos;re on the list, {firstName}.{' '}
-              <Sparkles
-                size={22}
-                color="#f59e0b"
-                strokeWidth={2}
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#f59e0b"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 style={{ display: 'inline', verticalAlign: 'middle' }}
-              />
+              >
+                <path d="M12 3l1.88 5.76a1 1 0 0 0 .95.69H21l-4.94 3.59a1 1 0 0 0-.36 1.12L17.58 20 12 16.41 6.42 20l1.88-5.84a1 1 0 0 0-.36-1.12L3 9.45h6.17a1 1 0 0 0 .95-.69L12 3z" />
+              </svg>
             </Heading>
 
             <Text style={paragraph}>
@@ -122,14 +154,7 @@ export default function WelcomeEmail({ fullName, projectType, urgency }: Welcome
             {/* CTA */}
             <Section style={buttonSection}>
               <Button href={shareHref} style={button}>
-                <Row>
-                  <Column style={{ paddingRight: '8px', verticalAlign: 'middle' }}>
-                    <Share2 size={14} color="#ffffff" strokeWidth={2} style={{ display: 'block' }} />
-                  </Column>
-                  <Column style={{ verticalAlign: 'middle' }}>
-                    Share with Someone
-                  </Column>
-                </Row>
+                Share with Someone
               </Button>
             </Section>
 
