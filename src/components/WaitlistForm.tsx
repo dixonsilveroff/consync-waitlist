@@ -13,7 +13,7 @@ import { trackEvent } from '@/lib/analytics';
 const steps = [
   { id: 1, name: 'Identity', fields: ['fullName', 'email', 'phone', 'location'] },
   { id: 2, name: 'Context', fields: ['projectStatus', 'projectLocation', 'projectType', 'budget', 'currentManagement'] },
-  { id: 3, name: 'Readiness', fields: ['verificationMethod', 'lossExperience', 'controlGap', 'monthlyLoss', 'urgency', 'escrowWillingness'] },
+  { id: 3, name: 'Readiness', fields: ['verificationMethod', 'lossExperience', 'controlGap', 'monthlyLoss', 'urgency', 'escrowWillingness', 'additionalComments'] },
 ];
 
 const WAITLIST_DRAFT_KEY = 'consync_waitlist_draft_v1';
@@ -376,6 +376,17 @@ export default function WaitlistForm() {
                             ))}
                           </div>
                           {errors.escrowWillingness && <p className="text-sm text-alert-red mt-1.5">{errors.escrowWillingness.message}</p>}
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-medium text-graphite-black mb-1.5">Anything else you'd like us to know? (Optional)</label>
+                          <textarea
+                            {...register('additionalComments')}
+                            rows={4}
+                            placeholder="Share any specific features you're hoping for, your biggest concern, or anything else that might help us build the right solution for you."
+                            className="block w-full px-4 py-3 bg-concrete-white border-transparent rounded-xl focus:bg-white focus:ring-2 focus:ring-blueprint-blue focus:border-transparent transition-all resize-none"
+                          />
+                          {errors.additionalComments && <p className="text-sm text-alert-red mt-1.5">{errors.additionalComments.message}</p>}
                         </div>
                       </motion.div>
                     )}

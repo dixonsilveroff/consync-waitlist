@@ -45,6 +45,7 @@ export async function submitWaitlistForm(data: WaitlistFormValues) {
       escrowWillingness: submission.escrowWillingness,
       verificationMethod: submission.verificationMethod?.trim() || undefined,
       monthlyLoss: submission.monthlyLoss?.trim() || undefined,
+      additionalComments: submission.additionalComments?.trim() || undefined,
       source: 'website_waitlist',
       submittedAt: new Date().toISOString(),
     };

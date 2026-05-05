@@ -76,7 +76,9 @@ export const waitlistSchema = z.object({
     "no"
   ] as const, {
     message: "Please select an option."
-  })
+  }),
+
+  additionalComments: z.string().max(1000, 'Comments must be under 1000 characters.').optional(),
 });
 
 export type WaitlistFormValues = z.infer<typeof waitlistSchema>;
